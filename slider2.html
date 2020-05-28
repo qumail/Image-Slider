@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<img src="b1.jpg" class="all" onclick="show(0)">
+	<img src="b2.jpg" class="all" onclick="show(1)">
+	<img src="b3.jpg" class="all" onclick="show(2)">
+	<img src="b4.jpg" class="all" onclick="show(3)">
+
+
+	<div id="abc">
+		<button style="position: absolute; top: 50px; left: 1000px; cursor: pointer;" onclick="closeit()">Close</button>
+		<img src="1.jpg" id="bigimage">
+
+		<button id="pre" onclick="previous()">Previous</button>
+		<button id="next" onclick="next()">Next</button>
+	</div>
+
+
+</body>
+</html>
+<script type="text/javascript">
+
+		temp=document.getElementsByClassName("all");
+         length=temp.length;
+
+
+	selectedImage=0;
+	function show(i)
+	{
+		  selectedImage=i;
+		document.getElementById('abc').style.visibility=" visible";
+		temp=document.getElementsByClassName("all");
+		document.getElementById("bigimage").src=temp[i].src;
+
+	}
+	function next(){
+		if(selectedImage<length-1) 
+		{
+		 selectedImage=selectedImage+1;
+         temp=document.getElementsByClassName("all");
+		document.getElementById("bigimage").src=temp[selectedImage].src;
+	    } else {
+	    	selectedImage=0;
+	    	 temp=document.getElementsByClassName("all");
+		document.getElementById("bigimage").src=temp[selectedImage].src;
+	    }
+	}
+	function previous() {
+		console.log(selectedImage);
+		  if(selectedImage>0)
+		  {
+            selectedImage=selectedImage-1;
+         temp=document.getElementsByClassName("all");
+		document.getElementById("bigimage").src=temp[selectedImage].src;
+	   } else {
+             selectedImage=length-1;
+	    	 temp=document.getElementsByClassName("all");
+		document.getElementById("bigimage").src=temp[selectedImage].src;
+	   }
+	}
+
+	function closeit()
+	{
+		document.getElementById('abc').style.visibility=" hidden";
+		
+
+	}
+</script>
+
+<style type="text/css">
+	.all {
+		width: 300px;
+		margin: 20px;
+		cursor: pointer;
+
+	}
+
+	#abc {
+		background-color: black;
+		/*height: 700px;*/
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		visibility: hidden;
+		padding-left: 320px;
+		padding-top: 90px;
+
+
+	}
+	#pre {
+		position: absolute;
+		top: 300px;
+		left: 50px;
+		cursor: pointer;
+	}
+	#next{
+		position: absolute;
+		top: 300px;
+		left: 1200px;
+		cursor: pointer;
+	}
+
+	
+</style>
